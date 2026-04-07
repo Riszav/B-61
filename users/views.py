@@ -10,14 +10,20 @@ from .serializers import (
     RegisterValidateSerializer,
     AuthValidateSerializer,
     ConfirmationSerializer,
+    CustomJWTSerializer,
 )
 from .models import ConfirmationCode
 import random
 import string
 from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 CustomUser = get_user_model()
+
+
+class CustomJWTView(TokenObtainPairView):
+    serializer_class = CustomJWTSerializer
 
 
 class AuthorizationAPIView(CreateAPIView):

@@ -83,6 +83,9 @@ class ProductListCreateAPIView(ListCreateAPIView):
         serializer = ProductValidateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
+        print("email: ", request.auth.get("email"))
+        print("call_me: ", request.auth.get("call_me"))
+
         # Get validated data
         title = serializer.validated_data.get("title")
         description = serializer.validated_data.get("description")
