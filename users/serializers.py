@@ -8,6 +8,10 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 CustomUser = get_user_model()
 
 
+class OauthSerializer(serializers.Serializer):
+    code = serializers.CharField()
+
+
 class CustomJWTSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
